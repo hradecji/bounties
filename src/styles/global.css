@@ -1,0 +1,304 @@
+/* CSS Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Base Typography and Layout */
+html {
+  font-size: 16px;
+}
+
+:root {
+  --top-bar-height: 54px;
+  --hero-height: 60vh; /* target: start content ~60% from top */
+}
+
+body {
+  margin-top: 50px;
+  font-family: var(--font-body);
+  background-color: var(--color-page-bg);
+  /* Make bgimage.png the fixed, full-page background */
+  background-image: url('/bgimage.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-attachment: fixed;
+  background-position-y: 50px;
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Main Container */
+#root {
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+/* Top-right Twitch link */
+.twitch-link {
+  position: fixed;
+  top: 60px;
+  right: 12px;
+  z-index: 10000;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  background: rgba(0,0,0,0.2);
+  backdrop-filter: blur(2px);
+  transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+}
+.twitch-link:hover {
+  transform: translateY(-1px);
+  background: rgba(0,0,0,0.3);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+}
+
+/* Layer 1: Background + Frame */
+.app-root {
+  min-height: 100vh;
+  position: relative;
+  /* Base bg now handled on body with bgimage.png */
+  background-color: transparent;
+}
+
+/* Top and Bottom Bars */
+/* Top bar */
+.app-root::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--top-bar-height);
+  width: 100%;
+  margin: 0;
+  z-index: 9999;
+  pointer-events: none;
+  background-image: url('/topbar.png');
+  background-size: 100% var(--top-bar-height);
+  background-repeat: repeat-x;
+  background-position: center top;
+}
+
+/* Bottom bar */
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: var(--top-bar-height);
+  width: 100%;
+  margin: 0;
+  z-index: 9999;
+  pointer-events: none;
+  background-image: url('/bottombar.png');
+  background-size: 100% var(--top-bar-height);
+  background-repeat: repeat-x;
+  background-position: center bottom;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --top-bar-height: 30px;
+  }
+  .app-root::before {
+    height: var(--top-bar-height);
+    background-size: 100% var(--top-bar-height);
+  }
+  
+  .bottom-bar {
+    height: var(--top-bar-height);
+    background-size: 100% var(--top-bar-height);
+  }
+}
+
+/* Layer 2: Hero Section */
+.hero {
+  position: relative;
+  height: var(--hero-height);
+  min-height: 400px;
+  max-height: 700px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6) var(--space-4);
+  z-index: 2;
+  /* Dark gradient overlay for text readability */
+  background: linear-gradient(
+    to bottom,
+    var(--color-hero-overlay) 0%,
+    transparent 100%
+  );
+}
+
+.hero-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 3;
+  height: 100%;
+}
+
+
+.hero-subtitle {
+  font-size: 20px;
+  color: white;
+  margin: -20px;
+  font-style: italic;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  font-family: var(--font-heading);
+  text-align: center;
+  margin-top: 50px;
+}
+
+/* Render subtitle nicely when placed inside the content sheet */
+.content-sheet .hero-subtitle {
+  color: var(--color-text-primary);
+  text-shadow: none;
+  position: sticky;
+  top: calc(var(--top-bar-height) + 24px);
+  /* counteracts global negative top margin on .hero-subtitle */
+  margin-top: -4px;
+}
+
+/* Western bounty look for subtitle */
+.content-sheet .hero-subtitle {
+  font-family: 'Rye', 'Cinzel Decorative', var(--font-heading), serif;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  color: #fff;
+  /* Outline + depth similar to the reference */
+  -webkit-text-stroke: 2px #2b1a0a;
+  text-shadow:
+    0 1px 0 rgba(0,0,0,0.25),
+    0 2px 2px rgba(0,0,0,0.25);
+}
+
+@media (max-width: 768px) {
+  .hero {
+    height: 50vh;
+    min-height: 300px;
+  }
+
+  .hero-subtitle {
+    margin: 8rem 0 0;
+  }
+}
+
+/* Layer 3: Parchment Content Sheet */
+.main-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 var(--space-4) var(--space-8);
+}
+
+.content-sheet {
+  box-sizing: border-box; /* include frame border in max-width to match background width */
+  max-width: 1150px;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: var(--space-6);
+  background-color: transparent;
+  /* Remove overall frame and shadow; keep cards framed elsewhere */
+  border: none;
+  box-shadow: none;
+  padding: var(--space-6) var(--space-4);
+  position: relative;
+  z-index: 3;
+}
+
+@media (max-width: 768px) {
+  .content-sheet {
+    margin-top: var(--space-4);
+    padding: var(--space-4);
+  }
+}
+
+/* Filter Bar */
+.filter-bar {
+  margin-bottom: var(--space-6);
+  margin-top: var(--space-8);
+  padding: var(--space-4);
+  /* Remove frame from the filter bar */
+  border: none;
+  box-shadow: none;
+  background-color: rgba(0,0,0,0.0);
+  z-index: 3;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  /* filter-bar has no special mobile overrides */
+}
+
+/* Bounty Grid */
+.bounty-grid {
+  position: relative;
+}
+
+/* Simplify hero-subtitle appearance and behavior */
+.hero-subtitle {
+  font-size: clamp(1rem, 1.2vw, 1.5rem);
+  color: var(--color-text-primary);
+  margin: 0 0 var(--space-4) 0;
+  font-style: normal;
+  text-shadow: none;
+  font-family: var(--font-heading);
+  text-align: left;
+  z-index: 0;
+}
+.content-sheet .hero-subtitle {
+  position: static;
+  top: auto;
+  margin-top: 0;
+  /* remove decorative stroke/shadow */
+  -webkit-text-stroke: 0;
+  text-shadow: none;
+  color: var(--color-text-primary);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+/* Focus Styles for Accessibility */
+*:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Smooth Transitions */
+button,
+input,
+select {
+  transition: all 0.2s ease;
+}
+
+/* Remove default button styles */
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* Remove default input styles */
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+}

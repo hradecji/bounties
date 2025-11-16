@@ -1,0 +1,38 @@
+.list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+}
+
+@media (min-width: 768px) {
+  .list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.emptyState {
+  text-align: center;
+  padding: var(--space-8) var(--space-4);
+  grid-column: 1 / -1;
+}
+
+.emptyMessage {
+  font-size: 1.25rem;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-3);
+  font-weight: 500;
+  font-family: var(--font-body);
+}
+
+.emptyHint {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+  font-family: var(--font-body);
+}

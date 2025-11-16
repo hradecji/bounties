@@ -1,0 +1,13 @@
+# Security Headers for Static Hosting (Netlify/Vercel)
+# Content Security Policy
+Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; frame-ancestors 'none';
+
+# X-Frame-Options
+X-Frame-Options: DENY
+
+# Referrer Policy
+Referrer-Policy: no-referrer-when-downgrade
+
+# X-Content-Type-Options
+X-Content-Type-Options: nosniff
+
