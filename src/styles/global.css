@@ -7,6 +7,15 @@
   padding: 0;
 }
 
+/* The Wild Breath of Zelda Font */
+@font-face {
+  font-family: 'The Wild Breath of Zelda';
+  src: url('/FONT/The Wild Breath of Zelda.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Base Typography and Layout */
 html {
   font-size: 16px;
@@ -222,6 +231,12 @@ body {
   z-index: 3;
 }
 
+.content-sheet .bounty-grid {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
 @media (max-width: 768px) {
   .content-sheet {
     margin-top: var(--space-4);
@@ -249,6 +264,9 @@ body {
 /* Bounty Grid */
 .bounty-grid {
   position: relative;
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
 
 /* Simplify hero-subtitle appearance and behavior */

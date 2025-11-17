@@ -23,9 +23,7 @@ export function BountyList({ bounties }: BountyListProps) {
   return (
     <section className={styles.list} role="list">
       {bounties.map((bounty) => (
-        <div key={bounty.id} role="listitem">
-          <BountyCard bounty={bounty} />
-        </div>
+        <BountyCard key={bounty.id} bounty={bounty} />
       ))}
     </section>
   );
