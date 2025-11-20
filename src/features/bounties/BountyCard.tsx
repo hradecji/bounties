@@ -8,12 +8,13 @@ interface BountyCardProps {
 export function BountyCard({ bounty }: BountyCardProps) {
   return (
     <article className={styles.card}>
-      <div className={styles.inner}>
+      <div className={styles.inner} style={{ marginBottom: "25%" }}>
         <img
           src="/bountypaper.png"
           alt=""
           className={styles.cardImage}
           aria-hidden="true"
+          style={{ width: '140%', height: '140%'}}
         />
         <div className={styles.content}>
           <h2 className={styles.title}>{bounty.title}</h2>

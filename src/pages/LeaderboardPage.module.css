@@ -1,0 +1,76 @@
+.leaderboardWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-5);
+}
+
+.leaderboardList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.frame_hero {
+  width: 700px;
+  padding: var(--space-4);
+  /** background-image: url('/frame_hero.png'); **/
+  background-repeat: no-repeat;
+  margin: 0 auto;
+  background-size: auto;
+}
+
+.leaderboardItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) var(--space-4);
+  border: 2px solid #4b2b13;
+  border-radius: 18px;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(3px);
+  color: #f6e5c3;
+  font-family: 'The Wild Breath of Zelda', cursive;
+}
+
+.rank {
+  font-family: 'Rye', serif;
+  font-size: clamp(1.4rem, 2.2vw, 2.6rem);
+  color: #f0cc7b;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  min-width: 3ch;
+}
+
+.playerName {
+  flex: 1;
+  margin: 0 var(--space-3);
+  font-size: clamp(1.1rem, 1.5vw, 1.8rem);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.countBadge {
+  font-size: clamp(1rem, 1.3vw, 1.4rem);
+  padding: 0.2rem 0.75rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #8c4b13, #c47a2c);
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 640px) {
+  .leaderboardItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+
+  .playerName {
+    margin: 0;
+  }
+}
+

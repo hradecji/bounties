@@ -82,6 +82,88 @@ body {
   background-color: transparent;
 }
 
+.nav-toggle {
+  position: fixed;
+  top: calc(var(--top-bar-height) + 12px);
+  left: 20px;
+  z-index: 10000;
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+  border: 2px solid #f0cc7b;
+  background: rgba(0, 0, 0, 0.45);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex-direction: column;
+  transition: transform 0.15s ease;
+}
+
+.nav-toggle span {
+  width: 22px;
+  height: 3px;
+  background: #f6e5c3;
+  border-radius: 999px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.nav-toggle.open span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+.nav-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+.nav-toggle.open span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+.main-nav {
+  position: fixed;
+  top: calc(var(--top-bar-height) + 70px);
+  left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: rgba(0, 0, 0, 0.75);
+  border-radius: 16px;
+  border: 2px solid #f0cc7b;
+  transform: translateX(-150%);
+  transition: transform 0.25s ease;
+  z-index: 9500;
+  min-width: 170px;
+}
+
+.main-nav.open {
+  transform: translateX(0);
+}
+
+.nav-link {
+  font-family: 'Rye', serif;
+  font-size: clamp(1rem, 1.1vw, 1.2rem);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #f6e5c3;
+  text-decoration: none;
+  padding: 0.35rem 0.75rem;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  transition: transform 0.15s ease, border-color 0.15s ease,
+    background 0.15s ease;
+}
+
+.nav-link:hover {
+  transform: translateY(-1px);
+  border-color: #f0cc7b;
+}
+
+.nav-link.active {
+  background: linear-gradient(135deg, #7b4117, #b66a1f);
+  border-color: #f0cc7b;
+  color: #fff;
+}
+
 /* Top and Bottom Bars */
 /* Top bar */
 .app-root::before {
