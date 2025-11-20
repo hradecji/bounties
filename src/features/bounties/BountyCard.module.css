@@ -61,7 +61,7 @@
 
 /* Player under title */
 .player {
-  margin: 0 0 10%;
+  margin: 0 0 5%;
   font-size: clamp(1rem, 1.4vw, 1.5rem);
   color: #8C3500;
   font-style: italic;
@@ -80,7 +80,7 @@
   color: #8C3500;
   line-height: 1.4;
   font-family: 'The Wild Breath of Zelda', cursive;
-  font-size: clamp(2.2rem, 2.7vw, 2.9rem);
+  font-size: clamp(2rem, 2.5vw, 2.7rem);
   text-align: center;
   word-wrap: break-word;
   overflow-wrap: break-word;
@@ -90,7 +90,7 @@
   -webkit-line-clamp: 8;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  max-width: 100%;
+  max-width: 110%;
   box-sizing: border-box;
 }
 
