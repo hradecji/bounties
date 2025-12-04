@@ -7,6 +7,7 @@ import type { FilterParams, SortOrder } from '../features/bounties/types';
 const defaultFilters: FilterParams = {
   playerNameFilter: '',
   bountyNameFilter: '',
+  descriptionFilter: '',
   sortOrder: 'classic' as SortOrder,
 };
 

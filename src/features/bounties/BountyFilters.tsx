@@ -43,6 +43,10 @@ export function BountyFilters({
     onFiltersChange({ ...filters, bountyNameFilter });
   };
 
+  const handleDescriptionChange = (descriptionFilter: string) => {
+    onFiltersChange({ ...filters, descriptionFilter });
+  };
+
   const handleSortChange = (sortOrder: SortOrder) => {
     onFiltersChange({ ...filters, sortOrder });
   };
@@ -106,6 +110,21 @@ export function BountyFilters({
           value={filters.bountyNameFilter}
           onChange={(e) => handleBountyNameChange(e.target.value)}
           placeholder="Filter by bounty name..."
+          className={styles.input}
+          autoComplete="off"
+        />
+      </div>
+
+      <div className={styles.filterGroup}>
+        <label htmlFor="description" className={styles.label}>
+          Description
+        </label>
+        <input
+          id="description"
+          type="text"
+          value={filters.descriptionFilter}
+          onChange={(e) => handleDescriptionChange(e.target.value)}
+          placeholder="Filter by bounty description..."
           className={styles.input}
           autoComplete="off"
         />

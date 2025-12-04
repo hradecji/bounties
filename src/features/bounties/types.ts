@@ -16,6 +16,7 @@ export type SortOrder = 'classic' | 'ascending' | 'descending' | 'random';
 export interface FilterParams {
   playerNameFilter: string;
   bountyNameFilter: string;
+  descriptionFilter: string;
   sortOrder: SortOrder;
 }
 

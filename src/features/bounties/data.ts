@@ -33,6 +33,20 @@ export function filterByBountyName(
   );
 }
 
+export function filterByDescription(
+  bounties: Bounty[],
+  descriptionFilter: string
+): Bounty[] {
+  if (!descriptionFilter.trim()) {
+    return bounties;
+  }
+
+  const filterLower = descriptionFilter.toLowerCase();
+  return bounties.filter((bounty) =>
+    bounty.description.toLowerCase().includes(filterLower)
+  );
+}
+
 function isAlphabetic(str: string): boolean {
   return /^[a-zA-Z]/.test(str);
 }
@@ -88,6 +102,7 @@ export function applyFilters(
 ): Bounty[] {
   let filtered = filterByPlayerName(bounties, filters.playerNameFilter);
   filtered = filterByBountyName(filtered, filters.bountyNameFilter);
+  filtered = filterByDescription(filtered, filters.descriptionFilter);
   filtered = sortByPlayerName(filtered, filters.sortOrder);
   return filtered;
 }
